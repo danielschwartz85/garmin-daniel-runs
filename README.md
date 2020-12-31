@@ -1,5 +1,5 @@
 # Garmin View Runs
-## View latest runs. [My runs example.](https://danielschwartz85.github.io/garmin-daniel-runs/)
+## View latest runs. [My runs example.](https://danielschwartz85.github.io/garmin-view-runs/)
 
 <br/>
 
