@@ -10,7 +10,7 @@ npm run build
 
 This updates to latest runs and commits to GitHub Pages.
 
-Jus make sure the ```.env``` file is locally set with: 
+Just make sure the ```.env``` file is locally set with: 
 ```
 GARMIN_USER_NAME=daniel@gmail.com
 GARMIN_PASSWORD=123456
