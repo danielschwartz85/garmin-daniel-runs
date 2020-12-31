@@ -1,9 +1,10 @@
 # Garmin View Runs
-## View latest runs. [My runs example.](https://danielschwartz85.github.io/garmin-view-runs/)
+### View Garmin Connect latest runs
+[My runs example](https://danielschwartz85.github.io/garmin-view-runs/)
 
 <br/>
 
-### Run 
+### Run:
 ```
 npm run build
 ```
