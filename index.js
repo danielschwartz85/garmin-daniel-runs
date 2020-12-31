@@ -1,6 +1,14 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-underscore-dangle */
 
+/*
+ * TODO
+ *
+ * take headers names from the same plaec
+ * ( now index.html holds the table column names and
+ * this holds the responsive column names )
+ */
+
 const attrMap = {
   startTimeLocal: {
     name: 'Start Time',
