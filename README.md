@@ -1,2 +1,2 @@
 # Garmin Daniel Runs
-## view for my latest runs
+## View my latest [runs](https://danielschwartz85.github.io/garmin-daniel-runs/)
