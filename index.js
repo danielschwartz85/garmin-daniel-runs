@@ -3,24 +3,31 @@
 
 const attrMap = {
   startTimeLocal: {
-    name: 'Time',
+    name: 'Start Time',
+  },
+  duration: {
+    name: 'Duration (min)',
+    mapper: (sec) => Math.round((sec / 60) * 10) / 10,
   },
   distance: {
-    name: 'Distance',
+    name: 'Distance (m)',
     mapper: (m) => Math.round(m).toLocaleString(),
   },
   averageSpeed: {
-    name: 'Avg Pace',
+    name: 'Avg Pace (mkm)',
     mapper: (mps) => Math.round(100 / ((mps / 1000) * 60)) / 100,
   },
   averageRunningCadenceInStepsPerMinute: {
-    name: 'Avg Cadance',
+    name: 'Avg Cadance (spm)',
     mapper: Math.round,
+  },
+  calories: {
+    name: 'Calories',
   },
 };
 
 function cellNameToAttrName(name) {
-  return name.replaceAll(' ', '-');
+  return name.replace(/[ ()\/]/g, '-');
 }
 
 class TableRow extends HTMLElement {
