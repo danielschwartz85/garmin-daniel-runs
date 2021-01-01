@@ -39,7 +39,7 @@ const attrMap = {
 };
 
 function cellNameToAttrName(name) {
-  return name.replace(/[ ()\/]/g, '-');
+  return name.replace(/[ ()/]/g, '-');
 }
 
 class TableRow extends HTMLElement {
