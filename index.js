@@ -87,5 +87,6 @@ function populateTable() {
 
 window.onload = () => {
   populateTable();
-  document.querySelector('.updated-at').innerHTML = `Updated at ${new Date(window.updated_at).toLocaleString()}`;
+  const updatedAtStr = `Updated at ${new Date(window.updated_at).toLocaleString()}`;
+  document.querySelector('.updated-at').innerHTML = updatedAtStr;
 };
