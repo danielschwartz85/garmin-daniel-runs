@@ -22,7 +22,7 @@ const opts = {
   const activities = JSON.stringify(activitiesJson);
 
   console.log('writing activities');
-  pWriteFile('./activities.js', `window.activities = ${activities}; window.updated_at=${new Date()};`);
+  pWriteFile('./activities.js', `window.activities = ${activities}; window.updated_at="${new Date()}";`);
 
   console.log('build successfull');
 }());
