@@ -15,15 +15,19 @@ const attrMap = {
   },
   duration: {
     name: 'Duration (min)',
-    mapper: (sec) => Math.round((sec / 60) * 10) / 10,
+    mapper: (sec) => parseInt((sec / 60) * 10, 10) / 10,
   },
   distance: {
-    name: 'Distance (m)',
-    mapper: (m) => Math.round(m).toLocaleString(),
+    name: 'Distance (km)',
+    mapper: (m) => parseInt((m / 100) * 10, 10) / 100,
   },
   averageSpeed: {
     name: 'Avg Pace (mkm)',
-    mapper: (mps) => Math.round(100 / ((mps / 1000) * 60)) / 100,
+    mapper: (mps) => {
+      const mkm = 1 / ((mps / 1000) * 60);
+      const sec = String((mkm % 1) * 60).split('.')[0];
+      return `${parseInt(mkm, 10)}.${sec.length === 1 ? `0${sec}` : sec}`;
+    },
   },
   averageRunningCadenceInStepsPerMinute: {
     name: 'Avg Cadance (spm)',
