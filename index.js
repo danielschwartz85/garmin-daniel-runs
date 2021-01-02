@@ -25,13 +25,13 @@ const attrMap = {
   'Start Time': {
     key: 'startTimeLocal',
   },
-  'Duration (min)': {
-    key: 'duration',
-    mapper: (sec) => parseInt((sec / 60) * 10, 10) / 10,
-  },
   'Distance (km)': {
     key: 'distance',
     mapper: (m) => parseInt((m / 100) * 10, 10) / 100,
+  },
+  'Duration (min)': {
+    key: 'duration',
+    mapper: (sec) => parseInt((sec / 60) * 10, 10) / 10,
   },
   'Avg Pace (mkm)': {
     key: 'averageSpeed',
