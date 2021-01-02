@@ -10,31 +10,43 @@
  */
 
 const attrMap = {
-  startTimeLocal: {
-    name: 'Start Time',
+  'Time Of Day': {
+    key: 'startTimeLocal',
+    mapper: (t) => {
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const date = new Date(t);
+      const day = days[date.getDay()];
+      const hour = date.getHours();
+      const partsOfDay = [[12, 'morning'], [15, 'noon'], [18, 'afternoon'], [20, 'evening'], [5, 'night']];
+      const partOfDay = partsOfDay.find(([limit]) => hour <= limit)[1];
+      return `${day} ${partOfDay}`;
+    },
   },
-  duration: {
-    name: 'Duration (min)',
+  'Start Time': {
+    key: 'startTimeLocal',
+  },
+  'Duration (min)': {
+    key: 'duration',
     mapper: (sec) => parseInt((sec / 60) * 10, 10) / 10,
   },
-  distance: {
-    name: 'Distance (km)',
+  'Distance (km)': {
+    key: 'distance',
     mapper: (m) => parseInt((m / 100) * 10, 10) / 100,
   },
-  averageSpeed: {
-    name: 'Avg Pace (mkm)',
+  'Avg Pace (mkm)': {
+    key: 'averageSpeed',
     mapper: (mps) => {
       const mkm = 1 / ((mps / 1000) * 60);
       const sec = String((mkm % 1) * 60).split('.')[0];
       return `${parseInt(mkm, 10)}.${sec.length === 1 ? `0${sec}` : sec}`;
     },
   },
-  averageRunningCadenceInStepsPerMinute: {
-    name: 'Avg Cadance (spm)',
+  'Avg Cadance (spm)': {
+    key: 'averageRunningCadenceInStepsPerMinute',
     mapper: Math.round,
   },
-  calories: {
-    name: 'Calories',
+  Calories: {
+    key: 'calories',
   },
 };
 
@@ -45,8 +57,7 @@ function cellNameToAttrName(name) {
 class TableRow extends HTMLElement {
   connectedCallback() {
     this.className = 'row';
-    const cellNames = Object.values(attrMap).map((a) => a.name);
-    for (const elem of cellNames) {
+    for (const elem of Object.keys(attrMap)) {
       this._appendCell(elem);
     }
   }
@@ -68,7 +79,7 @@ window.customElements.define('table-row', TableRow);
 
 function addRow(activity) {
   const row = document.createElement('table-row');
-  for (const [key, { name, mapper }] of Object.entries(attrMap)) {
+  for (const [name, { key, mapper }] of Object.entries(attrMap)) {
     const value = mapper ? mapper(activity[key]) : activity[key];
     const attrName = cellNameToAttrName(name);
     row.setAttribute(attrName, value);
