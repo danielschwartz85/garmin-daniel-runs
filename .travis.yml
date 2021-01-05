@@ -5,10 +5,13 @@ env:
     - DEBUG=garmin:*
 script:
     - npm run activity-build
+os: linux
+dist: xenial
 deploy:
   provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  cleanup: false
+  strategy: git
+  token: $GITHUB_TOKEN
   keep_history: true
   on:
     branch: main
