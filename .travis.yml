@@ -9,7 +9,7 @@ os: linux
 dist: xenial
 deploy:
   edge: true
-  provider: pages:git
+  provider: pages
   cleanup: false
   token: $GITHUB_TOKEN
   keep_history: true
