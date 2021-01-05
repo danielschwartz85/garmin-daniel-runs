@@ -24,5 +24,5 @@ const opts = {
   console.log('writing activities');
   pWriteFile('./activities.js', `window.activities = ${activities}; window.updated_at=${Date.now()};`);
 
-  console.log('build successfull', process.env.GITHUB_TOKEN);
+  console.log('build successfull');
 }());
