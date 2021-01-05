@@ -8,7 +8,8 @@ script:
 os: linux
 dist: xenial
 deploy:
-  provider: pages
+  edge: true
+  provider: pages:git
   cleanup: false
   strategy: git
   token: $GITHUB_TOKEN
