@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"npm run a-build && git commit -am 'update' && git push origin main",
-    "a-build":"node ./buildActivities.js"
+    "build-push":"npm run activity-build && git commit -am 'update' && git push origin main",
+    "activity-build":"node ./buildActivities.js"
   },
   "keywords": [],
   "author": "",
