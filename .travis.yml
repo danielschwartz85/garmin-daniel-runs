@@ -14,6 +14,7 @@ branches:
 deploy:
   edge: true
   provider: pages
+  strategy: git
   cleanup: false
   token: $GITHUB_TOKEN
   keep_history: true
