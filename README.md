@@ -4,19 +4,17 @@
 
 <br/>
 
-### Run:
+### Build:
 ```
-npm run build
+npm run activity-build
 ```
 
-This updates to latest runs and commits to GitHub Pages.
-
-Just make sure the ```.env``` file is locally set with: 
+Just make sure env variables are set: 
 ```
 GARMIN_USER_NAME=daniel@gmail.com
 GARMIN_PASSWORD=123456
 ```
 
-<br/>
-
-~ Build with [garmin-run-fetch](https://github.com/danielschwartz85/garmin-run-fetch)
+* Build with [garmin-run-fetch](https://github.com/danielschwartz85/garmin-run-fetch)
+* `.env` file supported
+* you can use `npm run build-push` for local run and perfrom a git push (for gh-pages update).
