@@ -8,7 +8,7 @@
 
 ### Build:
 ```
-npm run activity-build
+npm run build-activity
 ```
 
 ### Just make sure env variables are set: 
