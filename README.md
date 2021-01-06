@@ -9,7 +9,7 @@
 npm run activity-build
 ```
 
-Just make sure env variables are set: 
+### Just make sure env variables are set: 
 ```
 GARMIN_USER_NAME=daniel@gmail.com
 GARMIN_PASSWORD=123456
