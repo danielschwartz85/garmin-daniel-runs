@@ -4,14 +4,9 @@
 /*
  * TODO
  *
- * 1. take headers names from the same plaec
- *    ( now index.html holds the table column names and
- *    this holds the responsive column names )
- *
- * 2. set run type to garmin-run-fetch (and rename) then set as 'running'
- *    in buildActivities.js.
- * 3. enrich table
- *
+ * take headers names from the same plaec
+ * ( now index.html holds the table column names and
+ * this holds the responsive column names )
  */
 
 const attrMap = {

@@ -4,7 +4,7 @@ node_js:
 env:
     - DEBUG=garmin:*
 script:
-    - npm run build-activity
+    - npm run activity-build
 os: linux
 dist: xenial
 # Build from these branches:
@@ -14,7 +14,6 @@ branches:
 deploy:
   edge: true
   provider: pages
-  strategy: git
   cleanup: false
   token: $GITHUB_TOKEN
   keep_history: true
