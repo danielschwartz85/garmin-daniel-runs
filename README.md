@@ -1,6 +1,8 @@
 # Garmin View Runs
-### View Garmin Connect latest runs
-[My runs example](https://danielschwartz85.github.io/garmin-view-runs/)
+## Fetch Garmin last runs and create a page for viewing them. 
+
+## [My runs example](https://danielschwartz85.github.io/garmin-view-runs/)
+[![Build Status](https://travis-ci.com/danielschwartz85/garmin-view-runs.svg?branch=main)](https://travis-ci.com/danielschwartz85/garmin-view-runs)
 
 <br/>
 
@@ -16,5 +18,5 @@ GARMIN_PASSWORD=123456
 ```
 
 * Build with [garmin-run-fetch](https://github.com/danielschwartz85/garmin-run-fetch)
-* `.env` file supported
-* you can use `npm run build-push` for local run and perfrom a git push (for gh-pages update).
+* Supports `.env` files.
+* You can use `npm run build-push` for local run and perfrom a git push (for gh-pages update).
