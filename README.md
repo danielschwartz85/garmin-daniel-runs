@@ -19,4 +19,4 @@ GARMIN_PASSWORD=123456
 
 * Build with [garmin-run-fetch](https://github.com/danielschwartz85/garmin-run-fetch)
 * Supports `.env` files.
-* You can use `npm run build-push` for local run and perfrom a git push (for `gh-pages` update).
+* You can use `npm run build-push` for local run and perfrom a git push.
