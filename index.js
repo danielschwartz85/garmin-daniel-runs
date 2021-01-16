@@ -45,10 +45,24 @@ const attrMap = {
       const sec = String((mkm % 1) * 60).split('.')[0];
       return `${parseInt(mkm, 10)}.${sec.length === 1 ? `0${sec}` : sec}`;
     },
+    isGood: (value) => {
+      let [min, sec] = value.split('.');
+      min = parseInt(min, 10);
+      sec = parseInt(sec, 10);
+      return (min + (sec / 100)) <= 5;
+    },
+    isBad: (value) => {
+      let [min, sec] = value.split('.');
+      min = parseInt(min, 10);
+      sec = parseInt(sec, 10);
+      return (min + (sec / 100)) >= 5.15;
+    },
   },
   'Avg Cadance (spm)': {
     key: 'averageRunningCadenceInStepsPerMinute',
     mapper: Math.round,
+    isGood: (value) => value >= 175 && value <= 185,
+    isBad: (value) => value <= 169,
   },
   Calories: {
     key: 'calories',
@@ -69,14 +83,23 @@ class TableRow extends HTMLElement {
 
   _appendCell(cellName) {
     const cell = document.createElement('div');
-    cell.className = 'cell';
+    cell.classList.add('cell');
 
     const att = document.createAttribute('data-title');
     att.value = cellName;
     cell.setAttributeNode(att);
 
     const attrName = cellNameToAttrName(cellName);
-    cell.innerHTML = this.getAttribute(attrName);
+    const data = this.getAttribute(attrName);
+    const isGood = attrMap[cellName].isGood ? attrMap[cellName].isGood(data) : false;
+    if (isGood) {
+      cell.classList.add('good');
+    }
+    const isBad = attrMap[cellName].isBad ? attrMap[cellName].isBad(data) : false;
+    if (isBad) {
+      cell.classList.add('bad');
+    }
+    cell.innerHTML = data;
     this.appendChild(cell);
   }
 }
