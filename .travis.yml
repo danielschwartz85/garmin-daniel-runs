@@ -10,7 +10,7 @@ dist: xenial
 # Build from these branches:
 branches:
   only:
-  - gh-pages
+  - main
 deploy:
   edge: true
   provider: pages
@@ -20,4 +20,4 @@ deploy:
   keep_history: true
   # Allow deployment only from these branches:
   on:
-    branch: gh-pages
+    branch: main
