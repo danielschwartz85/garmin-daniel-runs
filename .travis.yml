@@ -10,7 +10,7 @@ dist: xenial
 # Build from these branches:
 branches:
  only:
- - main
+ - gh-pages
 deploy:
   edge: true
   provider: pages
@@ -18,6 +18,6 @@ deploy:
   cleanup: false
   token: $GITHUB_TOKEN
   keep_history: true
-  # Allow deployment only to these branches:
+  # Allow deployment only from these branches:
   on:
    branch: gh-pages
