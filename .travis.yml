@@ -19,5 +19,5 @@ deploy:
   token: $GITHUB_TOKEN
   keep_history: true
   # Allow deployment only from these branches:
-  # on:
-  #  branch: main
+  on:
+   branch: main
