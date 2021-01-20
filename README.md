@@ -6,9 +6,9 @@
 
 <br/>
 
-### Build:
+### Build (update the table with latest runs):
 ```
-npm run build-activity
+npm run build-activity 
 ```
 
 ### Just make sure env variables are set: 
@@ -16,6 +16,10 @@ npm run build-activity
 GARMIN_USER_NAME=daniel@gmail.com
 GARMIN_PASSWORD=123456
 ```
+
+### Then serve: ```index.html```
+
+<br/>
 
 * Build with [garmin-run-fetch](https://github.com/danielschwartz85/garmin-run-fetch)
 * Supports `.env` files.
