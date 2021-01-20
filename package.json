@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-push": "npm run build-activity && git commit -am 'update' && git push origin gh-pages",
-    "build-activity": "node ./buildActivities.js"
+    "build-activity": "node ./buildActivities.js",
+    "daniel-build": "npm run daniel-fetch-cred && npm run build-activity",
+    "daniel-fetch-cred":"wget https://raw.githubusercontent.com/danielschwartz85/garmin-view-runs/gh-pages/.cred.json -O .cred.json"
   },
   "keywords": [],
   "author": "",
