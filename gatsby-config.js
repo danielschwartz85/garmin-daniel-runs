@@ -5,7 +5,7 @@
  */
 
 module.exports = {
-  pathPrefix: '/garmin-view-runs/public',
+  pathPrefix: '/garmin-view-runs/public', // will only be active aith --prefix-paths build flag.
   plugins: [
     // Load data json from fs :
     {

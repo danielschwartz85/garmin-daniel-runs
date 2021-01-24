@@ -16,7 +16,7 @@
     "build-push": "npm run fetch-and-build && git commit -am 'update' && git push origin gh-pages",
     "fetch-and-build": "npm run fetch-data && gatsby build",
     "fetch-data": "node ./src/scripts/fetchActivities.js",
-    "daniel-fetch-and-build": "npm run daniel-fetch-cred && npm run fetch-data && gatsby build",
+    "daniel-fetch-and-build": "npm run daniel-fetch-cred && npm run fetch-data && gatsby build --prefix-paths",
     "daniel-fetch-cred": "wget https://raw.githubusercontent.com/danielschwartz85/garmin-view-runs/gh-pages/.cred.json -O .cred.json"
   },
   "dependencies": {
