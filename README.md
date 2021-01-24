@@ -17,7 +17,7 @@ GARMIN_USER_NAME=daniel@gmail.com
 GARMIN_PASSWORD=123456
 ```
 
-### Then serve: ```public/index.html```
+### Then serve: ```public/```
 
 <br/>
 
