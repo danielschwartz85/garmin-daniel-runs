@@ -1,3 +1,4 @@
 /node_modules
 .env
+.cache
 # .cred.json this can be saved to improve performance, since the file is encrypted.
