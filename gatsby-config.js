@@ -5,6 +5,7 @@
  */
 
 module.exports = {
+  pathPrefix: '/garmin-view-runs/public',
   plugins: [
     // Load data json from fs :
     {
