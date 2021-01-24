@@ -8,7 +8,7 @@
 
 ### Build (update the table with latest runs):
 ```
-npm run build-activity 
+npm run fetch-and-build 
 ```
 
 ### Just make sure env variables are set: 
@@ -17,10 +17,11 @@ GARMIN_USER_NAME=daniel@gmail.com
 GARMIN_PASSWORD=123456
 ```
 
-### Then serve: ```index.html```
+### Then serve: ```public/index.html```
 
 <br/>
 
 * Build with [garmin-run-fetch](https://github.com/danielschwartz85/garmin-run-fetch)
 * Supports `.env` files.
 * You can use `npm run build-push` for local run and perfrom a git push (for `gh-pages` update).
+* Using [React](https://reactjs.org/), [Gatsby](https://www.gatsbyjs.com/) and [Material UI](https://material-ui.com/).

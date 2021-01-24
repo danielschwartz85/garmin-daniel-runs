@@ -4,7 +4,7 @@ node_js:
 env:
     - DEBUG=garmin:*
 script:
-    - npm run daniel-build
+    - npm run daniel-fetch-and-build
 os: linux
 dist: xenial
 # Build from these branches:
