@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     margin: '10px',
-    color: 'firebrick',
+    color: 'rgba(0, 0, 0, 0.87)',
   },
 }));
 
