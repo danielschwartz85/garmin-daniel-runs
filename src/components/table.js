@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useStaticQuery, graphql } from 'gatsby';
-import AttrMap from '../utils/attrMap';
+import AttrMap from './tableAttrMap';
 
 const useStyles = makeStyles({
   root: {
