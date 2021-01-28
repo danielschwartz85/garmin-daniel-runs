@@ -7,8 +7,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { useStaticQuery, graphql } from 'gatsby';
-import AttrMap from './tableAttrMap';
+import PropTypes from 'prop-types';
+import AttrMap from './attrMap';
 
 const useStyles = makeStyles({
   root: {
@@ -20,30 +20,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function BasicTable() {
+export default function BasicTable({ activities }) {
   const classes = useStyles();
-
-  const data = useStaticQuery(
-    graphql`
-      query {
-        allActivitiesJson {
-          edges {
-            node {
-              startTimeLocal,
-              distance,
-              duration,
-              averageSpeed,
-              averageRunningCadenceInStepsPerMinute,
-              calories
-            }
-          }
-        },
-      }
-    `,
-  );
-
   const uiKeys = Object.keys(AttrMap);
-  const rows = data.allActivitiesJson.edges.map((a) => a.node);
   const rowKey = AttrMap[uiKeys[1]].key;
 
   return (
@@ -58,7 +37,7 @@ export default function BasicTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {activities.map((row) => (
               <TableRow key={row[rowKey]}>
                 {uiKeys.map((uiKey) => {
                   const { key } = AttrMap[uiKey];
@@ -80,3 +59,8 @@ export default function BasicTable() {
     </Paper>
   );
 }
+
+BasicTable.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  activities: PropTypes.array.isRequired,
+};
