@@ -27,27 +27,35 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-52bad222d5173d27f328.js"
+    "url": "webpack-runtime-e2af60e4bfd2b12141f7.js"
   },
   {
     "url": "framework-acb96471af32e2ccbc9d.js"
   },
   {
-    "url": "app-4bf33c07013e3481a7cf.js"
+    "url": "app-430de094e80a29cf22a3.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "38d535ed7342384a10b244d5504c9a90"
+    "revision": "3b51e538fa11c50de2be267f8d801fee"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-19245c8506e49b502b12.js"
+  },
+  {
+    "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
+    "revision": "f6081b83111aea4128c98944b7fafccc"
+  },
+  {
+    "url": "page-data/app-data.json",
+    "revision": "29af2dced4d8d1e07adeedf430ca1e42"
   },
   {
     "url": "polyfill-92b076c0eec7a7a7a6c5.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "baa0ae74ae3e71585181470efc9af770"
+    "revision": "fd1571f6a75acfd9b27ae3afa856b320"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -134,12 +142,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^`), ``)
+  pathname = pathname.replace(new RegExp(`^/garmin-view-runs/public`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-4bf33c07013e3481a7cf.js`))) {
+  if (!resources || !(await caches.match(`/garmin-view-runs/public/app-430de094e80a29cf22a3.js`))) {
     return await fetch(event.request)
   }
 
@@ -152,7 +160,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/garmin-view-runs/public/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
