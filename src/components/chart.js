@@ -14,13 +14,14 @@ const cadanceMapper = mappers.find(({ key }) => key === 'averageRunningCadenceIn
 const paceMapper = mappers.find(({ key }) => key === 'averageSpeed');
 
 function Chart({ activities }) {
+  const { length } = activities;
   const cadanceData = activities.map(({ averageRunningCadenceInStepsPerMinute }, i) => {
     const y = cadanceMapper.mapper(averageRunningCadenceInStepsPerMinute);
-    return { x: i + 1, y };
+    return { x: length - i, y };
   });
   const paceData = activities.map(({ averageSpeed }, i) => {
     const y = paceMapper.mapper(averageSpeed).replace(':', '.');
-    return { x: i + 1, y: Number(y) };
+    return { x: length - i, y: Number(y) };
   });
 
   //   const paceToCadanceScale = ({ y }) => ((y - 4) * 7.5) + 170;
