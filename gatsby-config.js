@@ -31,8 +31,8 @@ module.exports = {
         name: 'MyRuns',
         short_name: 'MyRuns',
         start_url: '/',
-        background_color: '#fad28e',
-        theme_color: '#fad28e',
+        background_color: '#f5f5f5',
+        theme_color: '#f5f5f5',
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: 'standalone',
