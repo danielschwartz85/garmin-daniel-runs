@@ -17,7 +17,7 @@ deploy:
   strategy: git
   cleanup: false
   token: $GITHUB_TOKEN
-  keep_history: true
+  keep_history: false
   # Allow deployment only from these branches:
   on:
    branch: main
