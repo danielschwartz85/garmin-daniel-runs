@@ -29,7 +29,7 @@ function Chart({ activities }) {
 
   const onNearestX = (value, { index }) => {
     let pace = paceData[index].y;
-    pace = `${parseInt(pace, 10)}:${(pace % 1) * 0.6}`;
+    pace = `${parseInt(pace, 10)}:${(pace % 1) * 60}`;
     pace = pace.substring(0, 4);
     setTooltipValue({ pace, cadance: cadanceData[index].y, value });
   };
