@@ -23,12 +23,15 @@ function Chart({ activities }) {
     return { x: length - i, y };
   });
   const paceData = activities.map(({ averageSpeed }, i) => {
-    const y = paceMapper.mapper(averageSpeed).replace(':', '.');
-    return { x: length - i, y: Number(y) };
+    const [min, sec] = paceMapper.mapper(averageSpeed).split(':').map(Number);
+    return { x: length - i, y: min + (sec / 60) };
   });
 
   const onNearestX = (value, { index }) => {
-    setTooltipValue({ pace: paceData[index].y, cadance: cadanceData[index].y, value });
+    let pace = paceData[index].y;
+    pace = parseInt(pace, 10) + ((pace % 1) * 0.6);
+    pace = String(pace).substring(0, 4);
+    setTooltipValue({ pace, cadance: cadanceData[index].y, value });
   };
   const onMouseLeave = () => {
     setTooltipValue({});
