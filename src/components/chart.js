@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../node_modules/react-vis/dist/style.css';
 import {
   XYPlot, LineSeries,
   HorizontalGridLines, VerticalGridLines,
   YAxis, DiscreteColorLegend,
   makeWidthFlexible,
+  Crosshair,
 } from 'react-vis';
 import PropTypes from 'prop-types';
 import AttrMap from './attrMap';
@@ -14,6 +15,8 @@ const cadanceMapper = mappers.find(({ key }) => key === 'averageRunningCadenceIn
 const paceMapper = mappers.find(({ key }) => key === 'averageSpeed');
 
 function Chart({ activities }) {
+  const [tooltipValue, setTooltipValue] = useState(0);
+
   const { length } = activities;
   const cadanceData = activities.map(({ averageRunningCadenceInStepsPerMinute }, i) => {
     const y = cadanceMapper.mapper(averageRunningCadenceInStepsPerMinute);
@@ -24,12 +27,19 @@ function Chart({ activities }) {
     return { x: length - i, y: Number(y) };
   });
 
+  const onNearestX = (value, { index }) => {
+    setTooltipValue({ pace: paceData[index].y, cadance: cadanceData[index].y, value });
+  };
+  const onMouseLeave = () => {
+    setTooltipValue({});
+  };
+
   //   const paceToCadanceScale = ({ y }) => ((y - 4) * 7.5) + 170;
   const cadanceToPaceScale = ({ y }) => ((y - 170) / 7.5) + 4;
   const FXPlot = makeWidthFlexible(XYPlot);
 
   return (
-    <div className="chartComtainer" style={{ marginTop: '10px' }}>
+    <div className="chartComtainer" style={{ marginTop: '10px' }} onMouseLeave={onMouseLeave}>
       <FXPlot height={200} yDomain={[4, 6]}>
         <HorizontalGridLines />
         <VerticalGridLines />
@@ -48,8 +58,27 @@ function Chart({ activities }) {
             },
           ]}
         />
-        <LineSeries data={paceData} color="orange" />
+        <LineSeries data={paceData} color="orange" onNearestX={onNearestX} />
         <LineSeries data={cadanceData} color="green" getY={cadanceToPaceScale} />
+        <Crosshair className="test-class-name" values={[tooltipValue.value]}>
+          <div style={{
+            background: 'white',
+            borderStyle: 'solid',
+            borderWidth: '1px',
+            textAlign: 'center',
+            width: '120%',
+          }}
+          >
+            <p style={{ color: 'green' }}>
+              Cadance:
+              {tooltipValue.cadance}
+            </p>
+            <p style={{ color: 'orange' }}>
+              Pace:
+              {tooltipValue.pace}
+            </p>
+          </div>
+        </Crosshair>
       </FXPlot>
     </div>
   );
