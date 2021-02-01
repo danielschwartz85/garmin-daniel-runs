@@ -46,7 +46,12 @@ function Chart({ activities }) {
       <FXPlot height={200} yDomain={[4, 6]}>
         <HorizontalGridLines />
         <VerticalGridLines />
-        <YAxis />
+        <YAxis tickFormat={(v) => (
+          {
+            4: '4:00', 4.5: '4:30', 5: '5:00', 5.5: '5:30', 6: '6:00',
+          }[v]
+        )}
+        />
         <DiscreteColorLegend
           style={{ position: 'absolute', left: '50px', top: '10px' }}
           orientation="horizontal"
