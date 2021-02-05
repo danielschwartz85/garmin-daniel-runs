@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../node_modules/react-vis/dist/style.css';
+
 import {
   XYPlot, LineSeries,
   HorizontalGridLines, VerticalGridLines,
@@ -9,6 +10,8 @@ import {
 } from 'react-vis';
 import PropTypes from 'prop-types';
 import AttrMap from './attrMap';
+
+const { timeStrToDecimal, decimalToTimeStr } = require('pretty-time-decimal');
 
 const mappers = Object.values(AttrMap);
 const cadanceMapper = mappers.find(({ key }) => key === 'averageRunningCadenceInStepsPerMinute');
@@ -23,15 +26,13 @@ function Chart({ activities }) {
     return { x: length - i, y };
   });
   const paceData = activities.map(({ averageSpeed }, i) => {
-    const [min, sec] = paceMapper.mapper(averageSpeed).split(':').map(Number);
-    return { x: length - i, y: min + (sec / 60) };
+    const pace = paceMapper.mapper(averageSpeed);
+    const y = timeStrToDecimal(pace);
+    return { x: length - i, y };
   });
 
   const onNearestX = (value, { index }) => {
-    let pace = paceData[index].y;
-    const min = (pace % 1) * 60;
-    pace = `${parseInt(pace, 10)}:${min < 9 ? '0' : ''}${min}`;
-    pace = pace.substring(0, 4);
+    const pace = decimalToTimeStr(paceData[index].y);
     setTooltipValue({ pace, cadance: cadanceData[index].y, value });
   };
   const onMouseLeave = () => {
@@ -47,12 +48,7 @@ function Chart({ activities }) {
       <FXPlot height={200} yDomain={[4, 6]}>
         <HorizontalGridLines />
         <VerticalGridLines />
-        <YAxis tickFormat={(v) => (
-          {
-            4: '4:00', 4.5: '4:30', 5: '5:00', 5.5: '5:30', 6: '6:00',
-          }[v]
-        )}
-        />
+        <YAxis tickFormat={decimalToTimeStr} />
         <DiscreteColorLegend
           style={{ position: 'absolute', left: '50px', top: '10px' }}
           orientation="horizontal"

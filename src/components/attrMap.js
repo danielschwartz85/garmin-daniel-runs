@@ -1,3 +1,5 @@
+const { decimalToTimeStr } = require('pretty-time-decimal');
+
 const AttrMap = {
   'Time Of Day': {
     key: 'startTimeLocal',
@@ -30,8 +32,7 @@ const AttrMap = {
     key: 'averageSpeed',
     mapper: (mps) => {
       const mkm = 1 / ((mps / 1000) * 60);
-      const sec = String((mkm % 1) * 60).split('.')[0];
-      return `${parseInt(mkm, 10)}:${sec.length === 1 ? `0${sec}` : sec}`;
+      return decimalToTimeStr(mkm);
     },
     isGood: (value) => {
       let [min, sec] = value.split(':');
