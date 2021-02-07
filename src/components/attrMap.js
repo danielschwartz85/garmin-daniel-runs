@@ -18,7 +18,13 @@ const AttrMap = {
   },
   'Distance (km)': {
     key: 'distance',
-    mapper: (m) => parseInt((m / 100) * 100, 10) / 1000,
+    mapper: (m) => {
+      let km = parseInt((m / 100) * 100, 10) / 1000;
+      km = String(km);
+      // pad right zeros
+      km = km.replace(/(\d+\.\d$)/, '$100').replace(/(\d+\.\d\d$)/, '$10');
+      return km;
+    },
   },
   'Duration (min)': {
     key: 'duration',
