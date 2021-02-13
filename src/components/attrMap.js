@@ -29,9 +29,8 @@ const AttrMap = {
   'Duration (min)': {
     key: 'duration',
     mapper: (seconds) => {
-      const minuntes = parseInt(seconds / 60, 10);
-      const sec = Math.floor(seconds % 60);
-      return `${minuntes}:${sec}`;
+      const min = seconds / 60;
+      return decimalToTimeStr(min);
     },
   },
   'Avg Pace (mkm)': {
