@@ -8,7 +8,7 @@ const AttrMap = {
       const date = new Date(t);
       const day = days[date.getDay()];
       const hour = date.getHours();
-      const partsOfDay = [[12, 'morning'], [15, 'noon'], [18, 'afternoon'], [20, 'evening'], [5, 'night']];
+      const partsOfDay = [[12, 'morning'], [15, 'noon'], [18, 'afternoon'], [20, 'evening'], [24, 'night']];
       const partOfDay = partsOfDay.find(([limit]) => hour <= limit)[1];
       return `${day} ${partOfDay}`;
     },
