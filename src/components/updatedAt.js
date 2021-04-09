@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useStaticQuery, graphql } from 'gatsby';
+import * as moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,6 @@ export default function UpdatedAt() {
   );
 
   const epoch = data.dataJson.updatedAt;
-  const updatedAt = new Date(epoch).toLocaleString();
-  return <div className={classes.root}>{`Updated at ${updatedAt}`}</div>;
+  const updatedAt = moment(new Date(epoch)).fromNow();
+  return <div className={classes.root}>{`Updated ${updatedAt}`}</div>;
 }
