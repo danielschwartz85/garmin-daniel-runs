@@ -22,7 +22,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "dotenv": "^8.2.0",
-    "garmin-run-fetch": "^1.0.8",
+    "garmin-run-fetch": "^1.1.1",
     "gatsby": "^2.32.8",
     "gatsby-plugin-manifest": "^2.12.1",
     "gatsby-plugin-offline": "^3.10.2",
@@ -38,7 +38,7 @@
     "react-vis": "^1.11.7"
   },
   "devDependencies": {
-    "eslint": "^7.20.0",
+    "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
