@@ -45,7 +45,7 @@ function Chart({ activities }) {
 
   return (
     <div className="chartComtainer" style={{ marginTop: '10px' }} onMouseLeave={onMouseLeave}>
-      <FXPlot height={200} yDomain={[4, 6]}>
+      <FXPlot height={200} yDomain={[4.5, 6.5]}>
         <HorizontalGridLines />
         <VerticalGridLines />
         <YAxis tickFormat={decimalToTimeStr} />
