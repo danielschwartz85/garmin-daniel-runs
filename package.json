@@ -22,7 +22,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "dotenv": "^8.2.0",
-    "garmin-run-fetch": "^1.1.1",
+    "garmin-run-fetch": "^1.1.2",
     "gatsby": "^2.32.8",
     "gatsby-plugin-manifest": "^2.12.1",
     "gatsby-plugin-offline": "^3.10.2",
