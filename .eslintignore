@@ -1,0 +1,5 @@
+src/data/
+src/html.js
+.cred.json
+node_modules/
+.cache/

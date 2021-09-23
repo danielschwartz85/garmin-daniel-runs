@@ -1,0 +1,50 @@
+{
+  "name": "garmin-view-runs",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "Daniel Schwartz",
+  "license": "ISC",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "build-push": "npm run fetch-and-build && git commit -am 'update' && git push origin gh-pages",
+    "fetch-and-build": "npm run fetch-data && gatsby build",
+    "fetch-data": "node ./src/scripts/fetchActivities.js",
+    "daniel-fetch-and-build": "npm run daniel-fetch-cred && npm run fetch-data && gatsby build --prefix-paths",
+    "daniel-fetch-cred": "wget https://raw.githubusercontent.com/danielschwartz85/garmin-view-runs/gh-pages/.cred.json -O .cred.json"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "dotenv": "^8.2.0",
+    "garmin-run-fetch": "^1.1.2",
+    "gatsby": "^2.32.8",
+    "gatsby-plugin-manifest": "^2.12.1",
+    "gatsby-plugin-offline": "^3.10.2",
+    "gatsby-plugin-react-helmet": "^3.10.0",
+    "gatsby-source-filesystem": "^2.11.1",
+    "gatsby-transformer-json": "^2.11.0",
+    "moment": "^2.29.1",
+    "pretty-time-decimal": "^1.0.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-helmet": "^6.1.0",
+    "react-vis": "^1.11.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "gatsby-cli": "^2.19.2",
+    "prettier": "2.2.1"
+  }
+}
