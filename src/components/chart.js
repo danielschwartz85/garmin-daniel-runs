@@ -13,6 +13,9 @@ import AttrMap from './attrMap';
 
 const { timeStrToDecimal, decimalToTimeStr } = require('pretty-time-decimal');
 
+const MIN_PACE = 3;
+const MAX_PACE = 8;
+
 const mappers = Object.values(AttrMap);
 const cadanceMapper = mappers.find(({ key }) => key === 'averageRunningCadenceInStepsPerMinute');
 const paceMapper = mappers.find(({ key }) => key === 'averageSpeed');
@@ -40,12 +43,12 @@ function Chart({ activities }) {
   };
 
   //   const paceToCadanceScale = ({ y }) => ((y - 4) * 7.5) + 170;
-  const cadanceToPaceScale = ({ y }) => ((y - 170) / 7.5) + 4;
+  const cadanceToPaceScale = ({ y }) => ((y - 170) / 7.5) + MIN_PACE + 2;
   const FXPlot = makeWidthFlexible(XYPlot);
 
   return (
     <div className="chartComtainer" style={{ marginTop: '10px' }} onMouseLeave={onMouseLeave}>
-      <FXPlot height={200} yDomain={[4.5, 6.5]}>
+      <FXPlot height={200} yDomain={[MIN_PACE, MAX_PACE]}>
         <HorizontalGridLines />
         <VerticalGridLines />
         <YAxis tickFormat={decimalToTimeStr} />

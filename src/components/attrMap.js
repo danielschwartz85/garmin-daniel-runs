@@ -1,5 +1,11 @@
 const { decimalToTimeStr } = require('pretty-time-decimal');
 
+const MAX_GOOD_PACE = 5;
+const MIN_BAD_PACE = 6;
+const MAX_GOOD_CADANCE = 185;
+const MIN_GOOD_CADANCE = 175;
+const MAX_BAD_CADANCE = 169;
+
 const AttrMap = {
   'Time Of Day': {
     key: 'startTimeLocal',
@@ -43,20 +49,20 @@ const AttrMap = {
       let [min, sec] = value.split(':');
       min = parseInt(min, 10);
       sec = parseInt(sec, 10);
-      return (min + (sec / 100)) <= 5;
+      return (min + (sec / 100)) <= MAX_GOOD_PACE;
     },
     isBad: (value) => {
       let [min, sec] = value.split(':');
       min = parseInt(min, 10);
       sec = parseInt(sec, 10);
-      return (min + (sec / 100)) >= 5.15;
+      return (min + (sec / 100)) >= MIN_BAD_PACE;
     },
   },
   'Avg Cadance (spm)': {
     key: 'averageRunningCadenceInStepsPerMinute',
     mapper: Math.round,
-    isGood: (value) => value >= 175 && value <= 185,
-    isBad: (value) => value <= 169,
+    isGood: (value) => value >= MIN_GOOD_CADANCE && value <= MAX_GOOD_CADANCE,
+    isBad: (value) => value <= MAX_BAD_CADANCE,
   },
   Calories: {
     key: 'calories',
