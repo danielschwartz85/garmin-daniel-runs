@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - lts/*
+env:
+    - DEBUG=garmin:*
+script:
+    - npm run daniel-fetch-and-build
+os: linux
+dist: xenial
+# Build from these branches:
+branches:
+ only:
+ - main
+deploy:
+  edge: true
+  provider: pages
+  strategy: git
+  cleanup: false
+  token: $GITHUB_TOKEN
+  keep_history: false
+  # Allow deployment only from these branches:
+  on:
+   branch: main
